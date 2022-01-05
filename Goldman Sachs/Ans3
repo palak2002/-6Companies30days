@@ -1,0 +1,51 @@
+/*Question- https://www.google.com/url?q=https://practice.geeksforgeeks.org/problems/count-the-subarrays-having-product-less-than-k1708/1/&sa=D&source=editors&ust=1641379581968000&usg=AOvVaw2VlnvJgzU-k_dLGenVzOip
+Answer below:*/
+// { Driver Code Starts
+#include <bits/stdc++.h>
+using namespace std;
+
+
+
+ // } Driver Code Ends
+
+
+class Solution{
+  public:
+    int countSubArrayProductLessThanK(const vector<int>& a, int n, long long k) {
+    int pr=1,cnt=0;
+    int i=0,j=0; 
+    while(j<n)
+    {
+        pr=pr*a[j];
+        if(pr>=k)
+        {
+            while(pr>=k and i<=j)
+            {
+                pr=pr/a[i]; 
+                i++;
+            }
+        }
+        cnt+=(j-i+1); 
+        j++;
+    }
+    return cnt;
+        
+    }
+};
+
+// { Driver Code Starts.
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n, i;
+        long long int k;
+        cin >> n >> k;
+        vector<int> arr(n);
+        for (i = 0; i < n; i++) cin >> arr[i];
+        Solution obj;
+        cout << obj.countSubArrayProductLessThanK(arr, n, k) << endl;
+    }
+    return 0;
+}
+  // } Driver Code Ends
