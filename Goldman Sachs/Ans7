@@ -1,0 +1,25 @@
+/* Question- https://www.google.com/url?q=https://www.geeksforgeeks.org/distributing-m-items-circle-size-n-starting-k-th-position/&sa=D&source=editors&ust=1641379581978000&usg=AOvVaw31a0T5TFZSNGAjNk5vHWxz
+Answer below:*/
+#include <iostream>
+using namespace std;
+
+    int findPosition(int N , int M , int K) {
+        while(--M) {
+            K++;
+            if(K == N+1) {
+                K = 1;
+            }
+        }
+        return K;
+    }
+
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n,m,k;
+        cin>>n>>m>>k;
+        cout << findPosition(n,m,k) <<"\n";
+    }
+    return 0;
+} 
